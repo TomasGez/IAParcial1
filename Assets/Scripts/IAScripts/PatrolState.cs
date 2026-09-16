@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolState : State
+public class PatrolStateOld : State
 {
     private PatrolData patrolData;
 
     private int currentNode;
     private int patrolDirection = 1;
 
-    public PatrolState(PatrolData data, FSM stateMachine) : base(stateMachine)
+    public PatrolStateOld(PatrolData data, FSM stateMachine) : base(stateMachine)
     {
         patrolData = data;
     }

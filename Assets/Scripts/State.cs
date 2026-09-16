@@ -2,10 +2,10 @@ using UnityEngine;
 
 public abstract class State
 {
-    protected FSM stateMachine;
-    protected State(FSM fsm)
+    protected FSM _stateMachine;
+    protected State(FSM stateMachine)
     {
-        stateMachine = fsm;
+        _stateMachine = stateMachine;
     }
 
     public virtual void Enter() {}

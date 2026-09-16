@@ -18,7 +18,7 @@ public class IdleState : State
 
         if(timer >= exitIdleTime)
         {
-            stateMachine.ChangeState(policeModes.Patrol);
+            _stateMachine.ChangeState(policeModes.Patrol);
         }
     }
 

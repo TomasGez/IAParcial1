@@ -18,7 +18,7 @@ public class FSMAgent : Agent
         stateMachine = new FSM();
 
         IdleState idleState = new IdleState(stateMachine);
-        PatrolState patrolState = new PatrolState(patrolData, stateMachine);
+        PatrolStateOld patrolState = new PatrolStateOld(patrolData, stateMachine);
 
         stateMachine.RegisterState(policeModes.Idle, idleState);
         stateMachine.RegisterState(policeModes.Patrol, patrolState);
@@ -30,11 +30,11 @@ public class FSMAgent : Agent
     {
         stateMachine.Update();
         
-        transform.position += currentVelocity * Time.deltaTime;
+        transform.position += _currentVelocity * Time.deltaTime;
 
-         if(currentVelocity != Vector3.zero)
+         if(_currentVelocity != Vector3.zero)
         {
-            transform.forward = currentVelocity;
+            transform.forward = _currentVelocity;
         }
     }
 }
