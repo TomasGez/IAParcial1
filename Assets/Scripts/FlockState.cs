@@ -38,7 +38,7 @@ public class FlockState : State
 
             if(Vector3.Distance(item.transform.position, _agent.transform.position) <= _flockData.separationRadius)
             {
-                desiredVector += (item.transform.position - _agent.transform.position);
+                desiredVector += item.transform.position - _agent.transform.position;
                 count++;
             }
         }

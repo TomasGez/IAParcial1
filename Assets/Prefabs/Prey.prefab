@@ -70,12 +70,12 @@ MonoBehaviour:
   maxSpeed: 5
   maxSteering: 5
   _flockData:
-    separationRadius: 0
-    alignmentRadius: 0
-    cohesionRadius: 0
-    separationWeight: 0
-    alignmentWeight: 0
-    cohesionWeight: 0
+    separationRadius: 2
+    alignmentRadius: 3
+    cohesionRadius: 4
+    separationWeight: 0.8
+    alignmentWeight: 0.5
+    cohesionWeight: 0.4
   _examineData:
     _agent: {fileID: 0}
   _escapeData:
