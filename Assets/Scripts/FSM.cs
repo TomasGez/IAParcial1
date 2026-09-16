@@ -12,6 +12,12 @@ public class FSM
         states[key] = state;
     }
 
+    public void StartFirstState(Enum key)
+    {
+        _currentState = states[key];
+        _currentState?.Enter();
+    }
+
     public void ChangeState(Enum key)
     {
         State newState = states[key];

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum preyModes {Flock, Examine, Escape, Dead}
 
-public class AgentBoid : Agent
+public class BoidAgent : Agent
 {
     private void Awake()
     {
