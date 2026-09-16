@@ -5,6 +5,7 @@ public class Bounds : MonoBehaviour
 {
     public static Bounds Instance {get; private set;}
 
+    [Header("Metrics")]
     [SerializeField] private float width;
     [SerializeField] private float height;
     [SerializeField] private bool drawBounds;

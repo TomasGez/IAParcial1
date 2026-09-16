@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class PatrolState : State
 {
-    public PatrolState(PatrolData data, FSM stateMachine) : base(stateMachine)
+    public PatrolState(Agent agent, PatrolData data, FSM stateMachine) : base(stateMachine)
     {
+        _agent = agent;
         _patrolData = data;
     }
 
+    private Agent _agent;
     private PatrolData _patrolData;
     private int _currentNode;
 
@@ -30,7 +32,7 @@ public class PatrolState : State
     {
         Transform currentPoint = _patrolData.patrolPoints[_currentNode];
 
-        if (Vector3.Distance(currentPoint.position, _patrolData._agent.transform.position) <= _patrolData.pointCheckDistance)
+        if (Vector3.Distance(currentPoint.position, _agent.transform.position) <= _patrolData.pointCheckDistance)
         {
             if(_currentNode + 1 < _patrolData.patrolPoints.Count)
             {
@@ -42,14 +44,13 @@ public class PatrolState : State
             }
         }
 
-        _patrolData._agent.Seek(currentPoint.position);
+        _agent.Seek(currentPoint.position);
     }
 }
 
 [System.Serializable]
 public class PatrolData
 {
-    [HideInInspector] public Agent _agent;
     public List<Transform> patrolPoints;
     public float pointCheckDistance;
 }

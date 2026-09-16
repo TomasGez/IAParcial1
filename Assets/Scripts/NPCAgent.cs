@@ -7,15 +7,28 @@ public class NPCAgent : Agent
     [Header("Patrol Stats")]
     [SerializeField] private PatrolData _patrolData;
 
+    [Header("Bait Stats")]
+    [SerializeField] private BaitData _baitData;
+
+    [Header("Attack Stats")]
+    [SerializeField] private AttackData _attackData;
+
+    [Header("Gather Stats")]
+    [SerializeField] private GatherData _gatherData;
+
     private void Awake()
     {
         _stateMachine = new FSM();
 
-        _patrolData._agent = this;
-
-        PatrolState patrolState = new PatrolState(_patrolData, _stateMachine);
+        PatrolState patrolState = new PatrolState(this, _patrolData, _stateMachine);
+        BaitState baitState = new BaitState(_baitData, _stateMachine);
+        AttackState attackState = new AttackState(_attackData, _stateMachine);
+        GatherState gatherState = new GatherState(_gatherData, _stateMachine);
 
         _stateMachine.RegisterState(hunterModes.Patrol, patrolState);
+        _stateMachine.RegisterState(hunterModes.Bait, baitState);
+        _stateMachine.RegisterState(hunterModes.Attack, attackState);
+        _stateMachine.RegisterState(hunterModes.Gather, gatherState);
 
         _stateMachine.StartFirstState(hunterModes.Patrol);
     }
@@ -24,13 +37,6 @@ public class NPCAgent : Agent
     {
         _stateMachine.Update();
 
-        transform.position += GetCurrentVelocity() * Time.deltaTime;
-
-        if (GetCurrentVelocity() != Vector3.zero)
-        {
-            transform.forward = GetCurrentVelocity();
-        }
-
-        transform.position = Bounds.Instance.OutOfBounds(transform.position);
+        Movement();
     }
 }

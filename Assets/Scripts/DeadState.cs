@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class BaitState : State
+public class DeadState : State
 {
-    public BaitState (BaitData data, FSM stateMachine) : base(stateMachine)
+    public DeadState(DeadData data, FSM stateMachine) : base(stateMachine)
     {
-        _baitData = data;
+        _deadData = data;
     }
 
-    private BaitData _baitData;
+    private DeadData _deadData;
 
     public override void Enter()
     {
@@ -16,18 +16,17 @@ public class BaitState : State
 
     public override void Update()
     {
-
+        
     }
 
     public override void Exit()
     {
-
+        
     }
 }
 
 [System.Serializable]
-public class BaitData
+public class DeadData
 {
     [HideInInspector] public Agent _agent;
-    
 }
