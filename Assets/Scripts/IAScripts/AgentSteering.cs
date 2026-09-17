@@ -67,28 +67,3 @@
 
 //        currentVelocity += CalculatedSteering(-desiredVelocity);
 //    }
-
-
-//    private Vector3 CalculatedCohesion(List<Agent> list, float radius)
-//    {
-//        Vector3 desiredVector = default;
-//        int count = 0;
-
-//        foreach(var item in list)
-//        {
-//            if(item == this) continue;
-
-//            if(InRange(item.transform.position, cohesionRadius))
-//            {
-//                desiredVector += item.transform.position;
-//                count++;
-//            }
-//        }
-
-//        if(count == 0) return Vector3.zero;
-
-//        desiredVector /= count;
-
-//        Vector3 desiredVelocity = CalculatedDesired(desiredVector);
-//        return CalculatedSteering(desiredVelocity.normalized * maxSpeed);
-//    }
