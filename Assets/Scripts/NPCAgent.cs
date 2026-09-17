@@ -21,7 +21,7 @@ public class NPCAgent : Agent
         _stateMachine = new FSM();
 
         PatrolState patrolState = new PatrolState(this, _patrolData, _stateMachine);
-        BaitState baitState = new BaitState(_baitData, _stateMachine);
+        BaitState baitState = new BaitState(this, _baitData, _stateMachine);
         AttackState attackState = new AttackState(_attackData, _stateMachine);
         GatherState gatherState = new GatherState(_gatherData, _stateMachine);
 
@@ -31,6 +31,8 @@ public class NPCAgent : Agent
         _stateMachine.RegisterState(hunterModes.Gather, gatherState);
 
         _stateMachine.StartFirstState(hunterModes.Patrol);
+
+        currentSpeed = maxSpeed;
     }
 
     private void Update()
@@ -38,5 +40,10 @@ public class NPCAgent : Agent
         _stateMachine.Update();
 
         Movement();
+    }
+
+    public void InstantiateBait(GameObject baitObject)
+    {
+        Instantiate(baitObject, transform.position, transform.rotation);
     }
 }

@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public abstract class Agent : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public abstract class Agent : MonoBehaviour
 
     [Header("Agents Stats")]
     [SerializeField] protected float maxSpeed;
+    protected float currentSpeed;
     [SerializeField] protected float maxSteering;
 
     public Vector3 GetCurrentVelocity()
@@ -30,13 +33,23 @@ public abstract class Agent : MonoBehaviour
         return maxSpeed;
     }
 
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
+    }
+
+    public void SetCurrentSpeed(float value)
+    {
+        currentSpeed = value;
+    }
+
     public void Movement()
     {
-        transform.position += GetCurrentVelocity() * Time.deltaTime;
+        transform.position += _currentVelocity * Time.deltaTime;
 
-        if (GetCurrentVelocity() != Vector3.zero)
+        if (_currentVelocity != Vector3.zero)
         {
-            transform.forward = GetCurrentVelocity();
+            transform.forward = _currentVelocity;
         }
 
         transform.position = Bounds.Instance.OutOfBounds(transform.position);
@@ -45,7 +58,7 @@ public abstract class Agent : MonoBehaviour
     public Vector3 CalculatedDirection(Vector3 targetPosition)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
-        direction *= maxSpeed;
+        direction *= currentSpeed;
 
         return direction;
     }

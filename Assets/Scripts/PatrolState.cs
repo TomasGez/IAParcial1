@@ -3,24 +3,33 @@ using UnityEngine;
 
 public class PatrolState : State
 {
-    public PatrolState(Agent agent, PatrolData data, FSM stateMachine) : base(stateMachine)
+    public PatrolState(NPCAgent agent, PatrolData data, FSM stateMachine) : base(stateMachine)
     {
         _agent = agent;
         _patrolData = data;
     }
 
-    private Agent _agent;
+    private NPCAgent _agent;
     private PatrolData _patrolData;
     private int _currentNode;
+    private float _baitTimer;
 
     public override void Enter()
     {
-
+        _baitTimer = _patrolData.baitStateChangeTime;
     }
 
     public override void Update()
     {
         PatrolLoop();
+
+        _baitTimer -= Time.deltaTime;
+
+        if(_baitTimer <= 0)
+        {
+            _baitTimer = _patrolData.baitStateChangeTime;
+            _stateMachine.ChangeState(hunterModes.Bait);
+        }
     }
 
     public override void Exit()
@@ -53,4 +62,5 @@ public class PatrolData
 {
     public List<Transform> patrolPoints;
     public float pointCheckDistance;
+    public float baitStateChangeTime;
 }

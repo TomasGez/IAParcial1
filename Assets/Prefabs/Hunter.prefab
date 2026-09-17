@@ -68,11 +68,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCAgent
   maxSpeed: 5
-  maxSteering: 10
+  maxSteering: 15
   _patrolData:
-    _agent: {fileID: 0}
     patrolPoints: []
-    pointCheckDistance: 0.1
+    pointCheckDistance: 0.2
+    baitStateChangeTime: 10
+  _baitData:
+    baitPrefab: {fileID: 7396840782780543423, guid: 69b955176d6a87b42946afd70bec6991, type: 3}
+    stopStart: 1
+    placeBaitTime: 2
+  _attackData:
+    _agent: {fileID: 0}
+  _gatherData:
+    _agent: {fileID: 0}
 --- !u!1 &4097439706121866433
 GameObject:
   m_ObjectHideFlags: 0

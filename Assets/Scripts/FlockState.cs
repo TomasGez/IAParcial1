@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class FlockState : State
 {
-    public FlockState(Agent agent, FlockData data, FSM stateMachine) : base(stateMachine)
+    public FlockState(BoidAgent agent, FlockData data, FSM stateMachine) : base(stateMachine)
     {
         _agent = agent;
         _flockData = data;
     }
 
-    private Agent _agent;
+    private BoidAgent _agent;
     private FlockData _flockData;
 
     public override void Enter()
