@@ -1,9 +1,15 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum hunterModes {Patrol, Bait, Attack, Gather}
 
 public class NPCAgent : Agent
 {
+
+
+    [Header("Hunter Stats")]
+    public BoidAgent currentTarget;
+
     [Header("Patrol Stats")]
     [SerializeField] private PatrolData _patrolData;
 
@@ -46,4 +52,16 @@ public class NPCAgent : Agent
     {
         Instantiate(baitObject, transform.position, transform.rotation);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Prey"))
+        {
+            Debug.Log("Hunter following new prey");
+            currentTarget = other.GetComponent<BoidAgent>();
+
+        }
+    }
+
+
 }

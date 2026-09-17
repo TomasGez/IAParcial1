@@ -30,6 +30,8 @@ public class PatrolState : State
             _baitTimer = _patrolData.baitStateChangeTime;
             _stateMachine.ChangeState(hunterModes.Bait);
         }
+
+
     }
 
     public override void Exit()

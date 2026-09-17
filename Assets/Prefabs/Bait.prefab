@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2658914744907550079}
   - component: {fileID: 3056223876525450199}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
