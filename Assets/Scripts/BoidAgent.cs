@@ -33,10 +33,10 @@ public class BoidAgent : Agent
 
         Spawner.Instance.AddAgent(this);
 
-        currentSpeed = maxSpeed;
+        _currentSpeed = maxSpeed;
 
         Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 0f,Random.Range(-1f, 1f));
-        _currentVelocity = randomDirection.normalized * currentSpeed;
+        _currentVelocity = randomDirection.normalized * _currentSpeed;
         
         _stateMachine.StartFirstState(preyModes.Flock);
     }

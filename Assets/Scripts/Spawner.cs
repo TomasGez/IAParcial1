@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
 
     [Header("Spawner Data")]
     [SerializeField] private GameObject preyPrefab;
-    [SerializeField] private float spawnTime;
+    [SerializeField] private float spawnCooldown;
     [SerializeField] private int maxAgents;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
             Destroy(gameObject);
         }
 
-        _spawnerTimer = spawnTime;
+        _spawnerTimer = spawnCooldown;
     }
 
     private void Update()
@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
 
             if(_spawnerTimer <= 0)
             {
-                _spawnerTimer = spawnTime;
+                _spawnerTimer = spawnCooldown;
                 Instantiate(preyPrefab, transform.position, transform.rotation);
             }
         }

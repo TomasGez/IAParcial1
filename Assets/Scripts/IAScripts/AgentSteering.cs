@@ -30,33 +30,10 @@
 //        Vector3 direction = target.transform.position - transform.position;
 //        float distance = direction.magnitude;
 
-//        if(distance < minDistance)
-//        {
-//            currentVelocity = Vector3.zero;
-//            return;
-//        }
-
 //        float targetSpeed = maxSpeed * (distance / slowingDistance);
 //        float desiredSpeed = Mathf.Min(targetSpeed, maxSpeed);
 
 //        Vector3 desiredVelocity = direction.normalized * desiredSpeed;
-
-//        currentVelocity += CalculatedSteering(desiredVelocity);
-//    }
-
-//    private Vector3 CalculatedFuture(Agent target)
-//    {
-//        Vector3 direction = target.transform.position - transform.position;
-//        float distance = direction.magnitude;
-
-//        float prediction = distance / (maxSpeed + target.currentVelocity.magnitude);
-//        Vector3 futurePosition = target.transform.position + target.currentVelocity * prediction;
-//        return futurePosition;
-//    }
-
-//    private void Pursuit(Agent target)
-//    {
-//        Vector3 desiredVelocity = CalculatedDesired(CalculatedFuture(target));
 
 //        currentVelocity += CalculatedSteering(desiredVelocity);
 //    }

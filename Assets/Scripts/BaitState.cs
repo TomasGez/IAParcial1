@@ -15,7 +15,7 @@ public class BaitState : State
 
     public override void Enter()
     {
-        _placeTimer = _baitData.placeBaitTime;
+        _placeTimer = _baitData.placeBaitCooldown;
         _stopingVelocity = _baitData.stopStart;
     }
 
@@ -38,7 +38,7 @@ public class BaitState : State
 
     public override void Exit()
     {
-        _placeTimer = _baitData.placeBaitTime;
+        _placeTimer = _baitData.placeBaitCooldown;
         _stopingVelocity = _baitData.stopStart;
         _agent.SetCurrentSpeed(_agent.GetMaxSpeed());
     }
@@ -49,5 +49,5 @@ public class BaitData
 {
     public GameObject baitPrefab;
     public float stopStart;
-    public float placeBaitTime;
+    public float placeBaitCooldown;
 }

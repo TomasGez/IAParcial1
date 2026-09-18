@@ -10,7 +10,7 @@ public abstract class Agent : MonoBehaviour
 
     [Header("Agents Stats")]
     [SerializeField] protected float maxSpeed;
-    protected float currentSpeed;
+    protected float _currentSpeed;
     [SerializeField] protected float maxSteering;
 
     public Vector3 GetCurrentVelocity()
@@ -35,12 +35,12 @@ public abstract class Agent : MonoBehaviour
 
     public float GetCurrentSpeed()
     {
-        return currentSpeed;
+        return _currentSpeed;
     }
 
     public void SetCurrentSpeed(float value)
     {
-        currentSpeed = value;
+        _currentSpeed = value;
     }
 
     public void Movement()
@@ -58,7 +58,7 @@ public abstract class Agent : MonoBehaviour
     public Vector3 CalculatedDirection(Vector3 targetPosition)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
-        direction *= currentSpeed;
+        direction *= _currentSpeed;
 
         return direction;
     }
@@ -77,5 +77,38 @@ public abstract class Agent : MonoBehaviour
         Vector3 desiredVelocity = CalculatedDirection(targetPosition);
 
         _currentVelocity += CalculatedSteering(desiredVelocity);
+    }
+
+    public Vector3 CalculatedFuture(Agent target)
+    {
+        Vector3 direction = target.transform.position - transform.position;
+        float distance = direction.magnitude;
+
+        float prediction = distance / (maxSpeed + target._currentVelocity.magnitude);
+        Vector3 futurePosition = target.transform.position + target._currentVelocity * prediction;
+        return futurePosition;
+    }
+
+    public void Arrive(Agent target, float slowingDistance, float minDistance)
+    {
+        float distance = Vector3.Distance(target.transform.position, transform.position);
+
+        if(distance <= minDistance)
+        {
+            _currentVelocity = Vector3.zero;
+            return;
+        }
+
+        float targetSpeed = maxSpeed * (distance / slowingDistance);
+        _currentSpeed = Mathf.Min(targetSpeed, maxSpeed);
+    }
+
+    public void Pursuit(Agent target, float slowingDistance, float minDistance)
+    {
+        Vector3 desiredVelocity = CalculatedDirection(CalculatedFuture(target));
+
+        _currentVelocity += CalculatedSteering(desiredVelocity);
+
+        Arrive(target, minDistance, slowingDistance);
     }
 }

@@ -16,7 +16,12 @@ public class PatrolState : State
 
     public override void Enter()
     {
-        _baitTimer = _patrolData.baitStateChangeTime;
+        if(_agent.GetIsHunting())
+        {
+            _stateMachine.ChangeState(hunterModes.Attack);
+        }
+
+        _baitTimer = _patrolData.baitChangeCooldown;
     }
 
     public override void Update()
@@ -27,11 +32,13 @@ public class PatrolState : State
 
         if(_baitTimer <= 0)
         {
-            _baitTimer = _patrolData.baitStateChangeTime;
+            _baitTimer = _patrolData.baitChangeCooldown;
             _stateMachine.ChangeState(hunterModes.Bait);
         }
-
-
+        else if(_agent.GetIsHunting())
+        {
+            _stateMachine.ChangeState(hunterModes.Attack);
+        }
     }
 
     public override void Exit()
@@ -64,5 +71,5 @@ public class PatrolData
 {
     public List<Transform> patrolPoints;
     public float pointCheckDistance;
-    public float baitStateChangeTime;
+    public float baitChangeCooldown;
 }
