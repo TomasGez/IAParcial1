@@ -14,7 +14,7 @@ public class FlockState : State
 
     public override void Enter()
     {
-
+        _agent.currentMode = "Flock";
     }
 
     public override void Update()

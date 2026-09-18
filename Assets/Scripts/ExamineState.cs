@@ -13,17 +13,19 @@ public class ExamineState : State
 
     public override void Enter()
     {
-
+        _agent.currentMode = "Examine";
     }
 
     public override void Update()
     {
         if(_agent.GetIsDead())
         {
+            _agent?.SetCurrentItem(null);
             _stateMachine.ChangeState(preyModes.Dead);
         }
         else if(_agent.GetIsEscaping())
         {
+            _agent?.SetCurrentItem(null);
             _stateMachine.ChangeState(preyModes.Escape);
         }
 
@@ -31,10 +33,9 @@ public class ExamineState : State
         {
             Arrive(_agent.GetCurrentItem());
 
-            if(Vector3.Distance(_agent.GetCurrentItem().transform.position, _agent.transform.position) <= _examineData.baitMinDistance)
+            if(Vector3.Distance(_agent.GetCurrentItem().transform.position, _agent.transform.position) <= _examineData.baitMinDistance + 0.5f)
             {
                 _agent.GetCurrentItem().Interacting();
-                _stateMachine.ChangeState(preyModes.Flock);
             }
         }
         else
@@ -46,6 +47,8 @@ public class ExamineState : State
     public override void Exit()
     {
         _agent.SetIsExamining(false);
+        Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 0f,Random.Range(-1f, 1f));
+        _agent.SetCurrentVelocity(randomDirection.normalized * _agent.GetCurrentSpeed());
     }
 
     private void Arrive(InterestItem target)

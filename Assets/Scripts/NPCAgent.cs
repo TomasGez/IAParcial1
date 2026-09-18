@@ -69,6 +69,11 @@ public class NPCAgent : Agent
         _preyQueue.Dequeue();
     }
 
+    public void ClearTargetQueue()
+    {
+        _preyQueue.Clear();
+    }
+
     public bool GetIsHunting()
     {
         return _isHunting;

@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2658914744907550079}
   - component: {fileID: 3056223876525450199}
+  - component: {fileID: -3632094641725381167}
   m_Layer: 8
   m_Name: Bait
   m_TagString: Untagged
@@ -166,3 +167,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3632094641725381167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7396840782780543423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661cb0cc6f629c549b43d7aec9c1ed6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InterestItem
+  maxHealth: 4

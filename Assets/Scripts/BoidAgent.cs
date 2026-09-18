@@ -4,6 +4,7 @@ public enum preyModes {Flock, Examine, Escape, Dead}
 
 public class BoidAgent : Agent
 {
+    public string currentMode;
     private InterestItem _bait;
     private NPCAgent _hunter;
     private bool _isExamining = false;
@@ -103,6 +104,6 @@ public class BoidAgent : Agent
 
     public void TerminatePrey()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 }

@@ -14,10 +14,17 @@ public class EscapeState : State
     public override void Enter()
     {
         Debug.Log("Escaping");
+        _agent.SetCurrentSpeed(_agent.GetMaxSpeed());
+        _agent.currentMode = "Escaping";
     }
 
     public override void Update()
     {
+        if(_agent.GetIsDead())
+        {
+            _stateMachine.ChangeState(preyModes.Dead);
+        }
+
         if(_agent.GetNPCTarget() != null)
         {
             Evade(_agent.GetNPCTarget());
@@ -36,6 +43,7 @@ public class EscapeState : State
     public override void Exit()
     {
         _agent.SetIsEscaping(false);
+        _agent.SetIsExamining(false);
     }
 
     public void Evade(Agent target)

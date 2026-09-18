@@ -169,6 +169,7 @@ MonoBehaviour:
   _patrolData:
     patrolPoints: []
     pointCheckDistance: 0.2
+    maxBaitAmount: 5
     baitChangeCooldown: 10
   _baitData:
     baitPrefab: {fileID: 7396840782780543423, guid: 69b955176d6a87b42946afd70bec6991, type: 3}

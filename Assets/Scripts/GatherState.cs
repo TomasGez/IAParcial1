@@ -42,7 +42,7 @@ public class GatherState : State
 
     public override void Exit()
     {
-
+        _agent.ClearTargetQueue();
     }
 }
 
