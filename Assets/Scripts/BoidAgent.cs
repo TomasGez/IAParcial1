@@ -4,8 +4,10 @@ public enum preyModes {Flock, Examine, Escape, Dead}
 
 public class BoidAgent : Agent
 {
+    private NPCAgent _hunter;
+    private bool _isExamining = false;
+    private bool _isEscaping = false;
     private bool _isDead = false;
-    [SerializeField] private NPCAgent _hunter;
 
     [Header("Flock Stats")]
     [SerializeField] private FlockData _flockData;
@@ -25,7 +27,7 @@ public class BoidAgent : Agent
 
         FlockState flockState = new FlockState(this, _flockData, _stateMachine);
         ExamineState examineState = new ExamineState(_examineData, _stateMachine);
-        EscapeState escapeState = new EscapeState(_escapeData, _stateMachine);
+        EscapeState escapeState = new EscapeState(this, _escapeData, _stateMachine);
         DeadState deadState = new DeadState(_deadData, _stateMachine);
 
         _stateMachine.RegisterState(preyModes.Flock, flockState);
@@ -48,6 +50,35 @@ public class BoidAgent : Agent
         _stateMachine.Update();
 
         Movement();
+    }
+
+    public NPCAgent GetNPCTarget()
+    {
+        return _hunter;
+    }
+
+    public void SetNPCTarget(NPCAgent target)
+    {
+        _hunter = target;
+    }
+
+    public bool GetIsExamining()
+    {
+        return _isExamining;
+    }
+
+    public void SetIsExamining(bool value)
+    {
+        _isExamining = value;
+    }
+    public bool GetIsEscaping()
+    {
+        return _isEscaping;
+    }
+
+    public void SetIsEscaping(bool value)
+    {
+        _isEscaping = value;
     }
 
     public bool GetIsDead()

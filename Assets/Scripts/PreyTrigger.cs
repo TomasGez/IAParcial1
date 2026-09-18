@@ -14,6 +14,8 @@ public class PreyTrigger : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Hunter"))
         {
             Debug.Log("Prey escaping from hunter");
+            _father?.SetNPCTarget(other.GetComponent<NPCAgent>());
+            _father.SetIsEscaping(true);
         }
     }
 }

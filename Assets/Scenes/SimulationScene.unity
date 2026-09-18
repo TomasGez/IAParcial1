@@ -887,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2844129820800947409, guid: 86b8bfd2e6b450a4aa70a33c1666d058, type: 3}
       propertyPath: maxSteering
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8591063626578462053, guid: 86b8bfd2e6b450a4aa70a33c1666d058, type: 3}
       propertyPath: m_Layer

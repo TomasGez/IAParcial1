@@ -99,8 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoidAgent
   maxSpeed: 5
-  maxSteering: 5
-  _hunter: {fileID: 0}
+  maxSteering: 20
   _flockData:
     separationRadius: 2
     alignmentRadius: 3
@@ -111,7 +110,7 @@ MonoBehaviour:
   _examineData:
     _agent: {fileID: 0}
   _escapeData:
-    _agent: {fileID: 0}
+    fleeHunterDistance: 8
   _deadData:
     _agent: {fileID: 0}
 --- !u!1 &5137336230610867363

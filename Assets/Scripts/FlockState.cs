@@ -23,6 +23,14 @@ public class FlockState : State
         {
             _stateMachine.ChangeState(preyModes.Dead);
         }
+        else if(_agent.GetIsEscaping())
+        {
+            _stateMachine.ChangeState(preyModes.Escape);
+        }
+        else if(_agent.GetIsExamining())
+        {
+            _stateMachine.ChangeState(preyModes.Examine);
+        }
 
         Flocking();
     }
