@@ -7,7 +7,7 @@ public enum hunterModes {Patrol, Bait, Hunt, Gather}
 public class NPCAgent : Agent
 {
     private Queue<BoidAgent> preyQueue = new Queue<BoidAgent>();
-    private bool _isHunting = false;
+    [SerializeField] private bool _isHunting = false;
 
     [Header("Patrol Stats")]
     [SerializeField] private PatrolData _patrolData;

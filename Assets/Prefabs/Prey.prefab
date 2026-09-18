@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoidAgent
   maxSpeed: 5
   maxSteering: 5
+  _hunter: {fileID: 0}
   _flockData:
     separationRadius: 2
     alignmentRadius: 3
@@ -214,7 +215,7 @@ GameObject:
   - component: {fileID: 5924310519428182245}
   - component: {fileID: 1689177030729843412}
   - component: {fileID: 1761439775763994542}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sight Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

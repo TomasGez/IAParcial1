@@ -151,16 +151,16 @@ MonoBehaviour:
     stopStart: 1
     placeBaitCooldown: 2
   _huntData:
-    preySlowingDistance: 2
+    preySlowingDistance: 3
     preyMinDistance: 1.5
     losePreyDistance: 7
-    attackCooldown: 0
-    rangeDistance: 0
-    meleeDistance: 0
+    attackCooldown: 6
+    rangeDistance: 6
+    meleeDistance: 3
   _gatherData:
-    corpseSlowingDistance: 0
-    corpseMinDistance: 0
-    harvestCooldown: 0
+    corpseSlowingDistance: 3
+    corpseMinDistance: 1
+    harvestCooldown: 3
 --- !u!1 &4097439706121866433
 GameObject:
   m_ObjectHideFlags: 0

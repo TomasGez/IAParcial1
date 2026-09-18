@@ -882,8 +882,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6118325062191670202, guid: 0b4ea5899c396dc488f7e7c721d39bf3, type: 3}
     - target: {fileID: 2844129820800947409, guid: 86b8bfd2e6b450a4aa70a33c1666d058, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2844129820800947409, guid: 86b8bfd2e6b450a4aa70a33c1666d058, type: 3}
       propertyPath: maxSteering
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591063626578462053, guid: 86b8bfd2e6b450a4aa70a33c1666d058, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -940,6 +948,14 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6118325062191670202, guid: 0b4ea5899c396dc488f7e7c721d39bf3, type: 3}
+      propertyPath: _gatherData.corpseMinDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118325062191670202, guid: 0b4ea5899c396dc488f7e7c721d39bf3, type: 3}
+      propertyPath: _huntData.preySlowingDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118325062191670202, guid: 0b4ea5899c396dc488f7e7c721d39bf3, type: 3}
       propertyPath: _patrolData.baitChangeCooldown
       value: 10
       objectReference: {fileID: 0}
@@ -950,6 +966,10 @@ PrefabInstance:
     - target: {fileID: 6118325062191670202, guid: 0b4ea5899c396dc488f7e7c721d39bf3, type: 3}
       propertyPath: _attackData.preySlowingDistance
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118325062191670202, guid: 0b4ea5899c396dc488f7e7c721d39bf3, type: 3}
+      propertyPath: _gatherData.corpseSlowingDistance
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6118325062191670202, guid: 0b4ea5899c396dc488f7e7c721d39bf3, type: 3}
       propertyPath: _patrolData.patrolPoints.Array.size
