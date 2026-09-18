@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class DeadState : State
 {
-    public DeadState(DeadData data, FSM stateMachine) : base(stateMachine)
+    public DeadState(BoidAgent agent, DeadData data, FSM stateMachine) : base(stateMachine)
     {
+        _agent = agent;
         _deadData = data;
     }
 
+    private BoidAgent _agent;
     private DeadData _deadData;
 
     public override void Enter()

@@ -25,19 +25,6 @@
 //        currentVelocity += CalculatedSteering(-desiredVelocity);
 //    }
 
-//    private void Arrive(Agent target)
-//    {
-//        Vector3 direction = target.transform.position - transform.position;
-//        float distance = direction.magnitude;
-
-//        float targetSpeed = maxSpeed * (distance / slowingDistance);
-//        float desiredSpeed = Mathf.Min(targetSpeed, maxSpeed);
-
-//        Vector3 desiredVelocity = direction.normalized * desiredSpeed;
-
-//        currentVelocity += CalculatedSteering(desiredVelocity);
-//    }
-
 //    private void Evade(Agent target)
 //    {
 //        Vector3 desiredVelocity = CalculatedDesired(CalculatedFuture(target));

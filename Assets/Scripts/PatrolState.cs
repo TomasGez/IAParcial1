@@ -31,7 +31,11 @@ public class PatrolState : State
         if(_baitTimer > _patrolData.baitChangeCooldown)
         {
             _baitTimer = 0;
-            _stateMachine.ChangeState(hunterModes.Bait);
+            
+            if(Manager.Instance.GetBaitAmount() < _patrolData.maxBaitAmount)
+            {
+                _stateMachine.ChangeState(hunterModes.Bait);
+            }
         }
         else if(_agent.GetIsHunting())
         {
@@ -69,5 +73,6 @@ public class PatrolData
 {
     public List<Transform> patrolPoints;
     public float pointCheckDistance;
+    public int maxBaitAmount;
     public float baitChangeCooldown;
 }

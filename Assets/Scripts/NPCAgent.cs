@@ -6,7 +6,7 @@ public enum hunterModes {Patrol, Bait, Hunt, Gather}
 
 public class NPCAgent : Agent
 {
-    private Queue<BoidAgent> preyQueue = new Queue<BoidAgent>();
+    private Queue<BoidAgent> _preyQueue = new Queue<BoidAgent>();
     private bool _isHunting = false;
 
     [Header("Patrol Stats")]
@@ -49,26 +49,24 @@ public class NPCAgent : Agent
 
     public BoidAgent GetCurrentBoidTarget()
     {
-        if (preyQueue != null && preyQueue.Count > 0)
+        if (_preyQueue != null && _preyQueue.Count > 0)
         {
-            return preyQueue.Peek();
+            return _preyQueue.Peek();
         }
+        else
+        {
             return null;
+        }
     }
 
     public void AddBoidTarget(BoidAgent target)
     {
-        preyQueue.Enqueue(target);
+        _preyQueue.Enqueue(target);
     }
 
     public void RemoveCurrentBoidTarget()
     {
-        preyQueue.Dequeue();
-    }
-
-    public void ClearTargetQueue()
-    {
-        preyQueue.Clear();
+        _preyQueue.Dequeue();
     }
 
     public bool GetIsHunting()

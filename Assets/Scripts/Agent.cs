@@ -8,7 +8,7 @@ public abstract class Agent : MonoBehaviour
     protected FSM _stateMachine;
     protected Vector3 _currentVelocity;
 
-    [Header("Agents Stats")]
+    [Header("Agent Stats")]
     [SerializeField] protected float maxSpeed;
     protected float _currentSpeed;
     [SerializeField] protected float maxSteering;
@@ -89,8 +89,12 @@ public abstract class Agent : MonoBehaviour
         return futurePosition;
     }
 
-    public void Arrive(Agent target, float slowingDistance, float minDistance)
+    public void Pursuit(Agent target, float slowingDistance, float minDistance)
     {
+        Vector3 desiredVelocity = CalculatedDirection(CalculatedFuture(target));
+
+        _currentVelocity += CalculatedSteering(desiredVelocity);
+
         float distance = Vector3.Distance(target.transform.position, transform.position);
 
         if(distance <= minDistance)
@@ -99,16 +103,8 @@ public abstract class Agent : MonoBehaviour
             return;
         }
 
-        float targetSpeed = maxSpeed * (distance / slowingDistance);
+        float stoppingDistance = distance - minDistance;
+        float targetSpeed = maxSpeed * (stoppingDistance / slowingDistance);
         _currentSpeed = Mathf.Min(targetSpeed, maxSpeed);
-    }
-
-    public void Pursuit(Agent target, float slowingDistance, float minDistance)
-    {
-        Vector3 desiredVelocity = CalculatedDirection(CalculatedFuture(target));
-
-        _currentVelocity += CalculatedSteering(desiredVelocity);
-
-        Arrive(target, minDistance, slowingDistance);
     }
 }

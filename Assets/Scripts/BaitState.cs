@@ -31,6 +31,7 @@ public class BaitState : State
             if(_placeTimer > _baitData.placeBaitCooldown)
             {
                 _agent.InstantiateBait(_baitData.baitPrefab);
+                Manager.Instance.AddBait();
                 _stateMachine.ChangeState(hunterModes.Patrol);
             }
         }

@@ -23,7 +23,10 @@ public class GatherState : State
         {
             _agent.Pursuit(_agent.GetCurrentBoidTarget(), _gatherData.corpseSlowingDistance, _gatherData.corpseMinDistance);
 
-            _harvestTimer += Time.deltaTime;
+            if(Vector3.Distance(_agent.GetCurrentBoidTarget().transform.position, _agent.transform.position) <= _gatherData.corpseMinDistance)
+            {
+                _harvestTimer += Time.deltaTime;
+            }
             
             if(_harvestTimer > _gatherData.harvestCooldown)
             {

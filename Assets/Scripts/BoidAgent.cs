@@ -4,6 +4,7 @@ public enum preyModes {Flock, Examine, Escape, Dead}
 
 public class BoidAgent : Agent
 {
+    private InterestItem _bait;
     private NPCAgent _hunter;
     private bool _isExamining = false;
     private bool _isEscaping = false;
@@ -26,9 +27,9 @@ public class BoidAgent : Agent
         _stateMachine = new FSM();
 
         FlockState flockState = new FlockState(this, _flockData, _stateMachine);
-        ExamineState examineState = new ExamineState(_examineData, _stateMachine);
+        ExamineState examineState = new ExamineState(this, _examineData, _stateMachine);
         EscapeState escapeState = new EscapeState(this, _escapeData, _stateMachine);
-        DeadState deadState = new DeadState(_deadData, _stateMachine);
+        DeadState deadState = new DeadState(this, _deadData, _stateMachine);
 
         _stateMachine.RegisterState(preyModes.Flock, flockState);
         _stateMachine.RegisterState(preyModes.Examine, examineState);
@@ -52,6 +53,15 @@ public class BoidAgent : Agent
         Movement();
     }
 
+    public InterestItem GetCurrentItem()
+    {
+        return _bait;
+    }
+
+    public void SetCurrentItem(InterestItem target)
+    {
+        _bait = target;
+    }
     public NPCAgent GetNPCTarget()
     {
         return _hunter;

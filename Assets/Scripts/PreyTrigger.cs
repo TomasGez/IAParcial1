@@ -17,5 +17,12 @@ public class PreyTrigger : MonoBehaviour
             _father?.SetNPCTarget(other.GetComponent<NPCAgent>());
             _father.SetIsEscaping(true);
         }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Bait") && _father.GetCurrentItem() == null)
+        {
+            Debug.Log("Prey examining bait");
+            _father?.SetCurrentItem(other.GetComponent<InterestItem>());
+            _father.SetIsExamining(true);
+        }
     }
 }

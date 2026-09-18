@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoidAgent
   maxSpeed: 5
   maxSteering: 20
+  _hunter: {fileID: 6118325062191670202, guid: 0b4ea5899c396dc488f7e7c721d39bf3, type: 3}
   _flockData:
     separationRadius: 2
     alignmentRadius: 3
