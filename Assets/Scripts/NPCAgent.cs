@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum hunterModes {Patrol, Bait, Attack, Gather}
+public enum hunterModes {Patrol, Bait, Hunt, Gather}
 
 public class NPCAgent : Agent
 {
-    private Queue<BoidAgent> targetQueue = new Queue<BoidAgent>();
-    private bool isHunting;
+    private Queue<BoidAgent> preyQueue = new Queue<BoidAgent>();
+    private bool _isHunting = false;
 
     [Header("Patrol Stats")]
     [SerializeField] private PatrolData _patrolData;
@@ -16,7 +16,7 @@ public class NPCAgent : Agent
     [SerializeField] private BaitData _baitData;
 
     [Header("Attack Stats")]
-    [SerializeField] private AttackData _attackData;
+    [SerializeField] private HuntData _huntData;
 
     [Header("Gather Stats")]
     [SerializeField] private GatherData _gatherData;
@@ -27,12 +27,12 @@ public class NPCAgent : Agent
 
         PatrolState patrolState = new PatrolState(this, _patrolData, _stateMachine);
         BaitState baitState = new BaitState(this, _baitData, _stateMachine);
-        AttackState attackState = new AttackState(this, _attackData, _stateMachine);
+        HuntState huntState = new HuntState(this, _huntData, _stateMachine);
         GatherState gatherState = new GatherState(this, _gatherData, _stateMachine);
 
         _stateMachine.RegisterState(hunterModes.Patrol, patrolState);
         _stateMachine.RegisterState(hunterModes.Bait, baitState);
-        _stateMachine.RegisterState(hunterModes.Attack, attackState);
+        _stateMachine.RegisterState(hunterModes.Hunt, huntState);
         _stateMachine.RegisterState(hunterModes.Gather, gatherState);
 
         _stateMachine.StartFirstState(hunterModes.Patrol);
@@ -49,45 +49,40 @@ public class NPCAgent : Agent
 
     public BoidAgent GetCurrentBoidTarget()
     {
-        if (targetQueue != null && targetQueue.Count > 0)
+        if (preyQueue != null && preyQueue.Count > 0)
         {
-            return targetQueue.Peek();
+            return preyQueue.Peek();
         }
             return null;
     }
 
+    public void AddBoidTarget(BoidAgent target)
+    {
+        preyQueue.Enqueue(target);
+    }
+
     public void RemoveCurrentBoidTarget()
     {
-        targetQueue.Dequeue();
+        preyQueue.Dequeue();
     }
 
     public void ClearTargetQueue()
     {
-        targetQueue.Clear();
+        preyQueue.Clear();
     }
 
     public bool GetIsHunting()
     {
-        return isHunting;
+        return _isHunting;
     }
 
     public void SetIsHunting(bool value)
     {
-        isHunting = value;
+        _isHunting = value;
     }
 
     public void InstantiateBait(GameObject baitObject)
     {
         Instantiate(baitObject, transform.position, transform.rotation);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Prey"))
-        {
-            Debug.Log("Hunter following new prey");
-            targetQueue.Enqueue(other.GetComponent<BoidAgent>());
-            isHunting = true;
-        }
     }
 }

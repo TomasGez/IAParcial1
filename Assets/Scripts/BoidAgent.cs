@@ -4,6 +4,9 @@ public enum preyModes {Flock, Examine, Escape, Dead}
 
 public class BoidAgent : Agent
 {
+    private bool _isDead = false;
+    [SerializeField] private NPCAgent _hunter;
+
     [Header("Flock Stats")]
     [SerializeField] private FlockData _flockData;
 
@@ -18,7 +21,6 @@ public class BoidAgent : Agent
 
     private void Awake()
     {
-
         _stateMachine = new FSM();
 
         FlockState flockState = new FlockState(this, _flockData, _stateMachine);
@@ -46,5 +48,20 @@ public class BoidAgent : Agent
         _stateMachine.Update();
 
         Movement();
+    }
+
+    public bool GetIsDead()
+    {
+        return _isDead;
+    }
+
+    public void SetIsDead(bool value)
+    {
+        _isDead = value;
+    }
+
+    public void TerminatePrey()
+    {
+        Destroy(this);
     }
 }

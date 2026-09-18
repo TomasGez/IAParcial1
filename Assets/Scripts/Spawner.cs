@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
     public static Spawner Instance {get; private set;}
 
     private static List<Agent> _allAgents = new List<Agent>();
-    private float _spawnerTimer;
+    private float _spawnerTimer = 0;
 
     [Header("Spawner Data")]
     [SerializeField] private GameObject preyPrefab;
@@ -23,19 +23,17 @@ public class Spawner : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        _spawnerTimer = spawnCooldown;
     }
 
     private void Update()
     {
         if(_allAgents.Count < maxAgents)
         {
-            _spawnerTimer -= Time.deltaTime;
+            _spawnerTimer += Time.deltaTime;
 
-            if(_spawnerTimer <= 0)
+            if(_spawnerTimer > spawnCooldown)
             {
-                _spawnerTimer = spawnCooldown;
+                _spawnerTimer = 0;
                 Instantiate(preyPrefab, transform.position, transform.rotation);
             }
         }

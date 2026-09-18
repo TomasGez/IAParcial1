@@ -10,17 +10,26 @@ public class GatherState : State
 
     private NPCAgent _agent;
     private GatherData _gatherData;
+    private float _harvestTimer = 0;
 
     public override void Enter()
     {
-        
+        _harvestTimer = 0;
     }
 
     public override void Update()
     {
         if(_agent.GetCurrentBoidTarget() != null)
         {
-            _agent.Pursuit(_agent.GetCurrentBoidTarget(), _gatherData.corpseMinDistance, _gatherData.corpseSlowingDistance);
+            _agent.Pursuit(_agent.GetCurrentBoidTarget(), _gatherData.corpseSlowingDistance, _gatherData.corpseMinDistance);
+
+            _harvestTimer += Time.deltaTime;
+            
+            if(_harvestTimer > _gatherData.harvestCooldown)
+            {
+                _agent.GetCurrentBoidTarget().TerminatePrey();
+                _stateMachine.ChangeState(hunterModes.Patrol);
+            }
         }
         else
         {
@@ -37,6 +46,7 @@ public class GatherState : State
 [System.Serializable]
 public class GatherData
 {
-    public float corpseMinDistance;
     public float corpseSlowingDistance;
+    public float corpseMinDistance;
+    public float harvestCooldown;
 }

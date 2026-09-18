@@ -12,32 +12,30 @@ public class PatrolState : State
     private NPCAgent _agent;
     private PatrolData _patrolData;
     private int _currentNode;
-    private float _baitTimer;
+    private float _baitTimer = 0;
 
     public override void Enter()
     {
         if(_agent.GetIsHunting())
         {
-            _stateMachine.ChangeState(hunterModes.Attack);
+            _stateMachine.ChangeState(hunterModes.Hunt);
         }
-
-        _baitTimer = _patrolData.baitChangeCooldown;
     }
 
     public override void Update()
     {
         PatrolLoop();
 
-        _baitTimer -= Time.deltaTime;
+        _baitTimer += Time.deltaTime;
 
-        if(_baitTimer <= 0)
+        if(_baitTimer > _patrolData.baitChangeCooldown)
         {
-            _baitTimer = _patrolData.baitChangeCooldown;
+            _baitTimer = 0;
             _stateMachine.ChangeState(hunterModes.Bait);
         }
         else if(_agent.GetIsHunting())
         {
-            _stateMachine.ChangeState(hunterModes.Attack);
+            _stateMachine.ChangeState(hunterModes.Hunt);
         }
     }
 

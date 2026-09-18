@@ -1,5 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2361098577829242689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7462018277461942716}
+  - component: {fileID: 6060466493042117334}
+  - component: {fileID: 1124577385417057528}
+  m_Layer: 6
+  m_Name: Sight Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7462018277461942716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361098577829242689}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8261885716668483837}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6060466493042117334
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361098577829242689}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 6.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1124577385417057528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2361098577829242689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca90e0505e87584d93f4cf746478808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HuntingTrigger
 --- !u!1 &3334587967180003991
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +75,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8261885716668483837}
-  - component: {fileID: 3172959737194521573}
   - component: {fileID: -5608213539074416240}
   - component: {fileID: 6118325062191670202}
   m_Layer: 6
@@ -33,29 +98,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 738976251182464061}
+  - {fileID: 7462018277461942716}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3172959737194521573
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3334587967180003991}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 6.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-5608213539074416240
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -105,15 +150,17 @@ MonoBehaviour:
     baitPrefab: {fileID: 7396840782780543423, guid: 69b955176d6a87b42946afd70bec6991, type: 3}
     stopStart: 1
     placeBaitCooldown: 2
-  _attackData:
-    preyMinDistance: 1
+  _huntData:
     preySlowingDistance: 2
-    losePreyDistance: 8
-    AttackCooldown: 0
+    preyMinDistance: 1.5
+    losePreyDistance: 7
+    attackCooldown: 0
     rangeDistance: 0
     meleeDistance: 0
   _gatherData:
-    _agent: {fileID: 0}
+    corpseSlowingDistance: 0
+    corpseMinDistance: 0
+    harvestCooldown: 0
 --- !u!1 &4097439706121866433
 GameObject:
   m_ObjectHideFlags: 0

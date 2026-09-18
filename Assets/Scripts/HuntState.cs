@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class AttackState : State
+public class HuntState : State
 {
-    public AttackState (NPCAgent agent, AttackData data, FSM stateMachine) : base(stateMachine)
+    public HuntState (NPCAgent agent, HuntData data, FSM stateMachine) : base(stateMachine)
     {
         _agent = agent;
-        _attackData = data;
+        _huntData = data;
     }
 
     private NPCAgent _agent;
-    private AttackData _attackData;
-    private float _attackTimer;
+    private HuntData _huntData;
+    private float _attackTimer = 0;
 
     public override void Enter()
     {
@@ -21,9 +21,9 @@ public class AttackState : State
     {
         if(_agent.GetCurrentBoidTarget() != null)
         {
-            _agent.Pursuit(_agent.GetCurrentBoidTarget(), _attackData.preyMinDistance, _attackData.preySlowingDistance);
+            _agent.Pursuit(_agent.GetCurrentBoidTarget(), _huntData.preySlowingDistance, _huntData.preyMinDistance);
 
-            if(Vector3.Distance(_agent.GetCurrentBoidTarget().transform.position, _agent.transform.position) > _attackData.losePreyDistance)
+            if(Vector3.Distance(_agent.GetCurrentBoidTarget().transform.position, _agent.transform.position) > _huntData.losePreyDistance)
             {
                 _agent.RemoveCurrentBoidTarget();
             }
@@ -37,17 +37,16 @@ public class AttackState : State
     public override void Exit()
     {
         _agent.SetIsHunting(false);
-        _agent.ClearTargetQueue();
     }
 }
 
 [System.Serializable]
-public class AttackData
+public class HuntData
 {
-    public float preyMinDistance;
     public float preySlowingDistance;
+    public float preyMinDistance;
     public float losePreyDistance;
-    public float AttackCooldown;
+    public float attackCooldown;
     public float rangeDistance;
     public float meleeDistance;
 }

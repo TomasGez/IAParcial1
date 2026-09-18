@@ -19,6 +19,11 @@ public class FlockState : State
 
     public override void Update()
     {
+        if(_agent.GetIsDead())
+        {
+            _stateMachine.ChangeState(preyModes.Dead);
+        }
+
         Flocking();
     }
 
