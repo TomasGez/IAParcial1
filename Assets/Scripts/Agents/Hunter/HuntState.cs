@@ -2,19 +2,21 @@ using UnityEngine;
 
 public class HuntState : State
 {
-    public HuntState (NPCAgent agent, HuntData data, FSM stateMachine) : base(stateMachine)
+    public HuntState (NPCAgent agent, HunterUI UI, HuntData data, FSM stateMachine) : base(stateMachine)
     {
+        _UI = UI;
         _agent = agent;
         _huntData = data;
     }
 
     private NPCAgent _agent;
+    private HunterUI _UI;
     private HuntData _huntData;
 
     public override void Enter()
     {
-        _agent.hunterUI.ChangeHunterUI(hunterModes.Hunt);
-        _agent.hunterUI.IsMeleeAttack(true);
+        _UI.ChangeHunterUI(hunterModes.Hunt);
+        _UI.IsMeleeAttack(true);
     }
 
     public override void Update()

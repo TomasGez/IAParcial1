@@ -12,34 +12,29 @@ public class HunterUI : MonoBehaviour
     [SerializeField] private Image _rangedIcon;
     [SerializeField] private Image _reloadBar;
     [SerializeField] private Image _placingBaitBar;
-    [SerializeField] private Image _harvestIcon;
 
     public void ChangeHunterUI(Enum type)
     {
+        _patrolHuntUI.SetActive(false);
+        _baitUI.SetActive(false);
+        _gatherUI.SetActive(false);
+        _patrolIcon.enabled = false;
+        _meleeIcon.enabled = false;
+        _rangedIcon.enabled = false;
+
         switch (type)
         {
             case hunterModes.Patrol:
                 _patrolHuntUI.SetActive(true);
-                _baitUI.SetActive(false);
-                _gatherUI.SetActive(false);
                 _patrolIcon.enabled = true;
-                _meleeIcon.enabled = false;
-                _rangedIcon.enabled = false;
                 break;
             case hunterModes.Bait:
-                _patrolHuntUI.SetActive(false);
                 _baitUI.SetActive(true);
-                _gatherUI.SetActive(false);
                 break;
             case hunterModes.Hunt:
                 _patrolHuntUI.SetActive(true);
-                _baitUI.SetActive(false);
-                _gatherUI.SetActive(false);
-                _patrolIcon.enabled = false;
                 break;
             case hunterModes.Gather:
-                _patrolHuntUI.SetActive(false);
-                _baitUI.SetActive(false);
                 _gatherUI.SetActive(true);
                 break;
             default:
@@ -52,11 +47,9 @@ public class HunterUI : MonoBehaviour
         if(isClose)
         {
             _meleeIcon.enabled = true;
-            _rangedIcon.enabled = false;
         }
         else
         {
-            _meleeIcon.enabled = false;
             _rangedIcon.enabled = true;
         }
     }

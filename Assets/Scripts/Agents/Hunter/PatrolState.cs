@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class PatrolState : State
 {
-    public PatrolState(NPCAgent agent, PatrolData data, FSM stateMachine) : base(stateMachine)
+    public PatrolState(NPCAgent agent, HunterUI UI, PatrolData data, FSM stateMachine) : base(stateMachine)
     {
+        _UI = UI;
         _agent = agent;
         _patrolData = data;
     }
 
     private NPCAgent _agent;
+    private HunterUI _UI;
     private PatrolData _patrolData;
     private int _currentNode;
     private float _baitTimer = 0;
@@ -21,7 +23,7 @@ public class PatrolState : State
             _stateMachine.ChangeState(hunterModes.Hunt);
         }
 
-        _agent.hunterUI.ChangeHunterUI(hunterModes.Patrol);
+        _UI.ChangeHunterUI(hunterModes.Patrol);
     }
 
     public override void Update()

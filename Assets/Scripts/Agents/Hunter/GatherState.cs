@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class GatherState : State
 {
-    public GatherState (NPCAgent agent, GatherData data, FSM stateMachine) : base(stateMachine)
+    public GatherState (NPCAgent agent, HunterUI UI, GatherData data, FSM stateMachine) : base(stateMachine)
     {
+        _UI = UI;
         _agent = agent;
         _gatherData = data;
     }
 
     private NPCAgent _agent;
+    private HunterUI _UI;
     private GatherData _gatherData;
     private float _harvestTimer = 0;
 
@@ -16,7 +18,7 @@ public class GatherState : State
     {
         _harvestTimer = 0;
 
-        _agent.hunterUI.ChangeHunterUI(hunterModes.Gather);
+        _UI.ChangeHunterUI(hunterModes.Gather);
     }
 
     public override void Update()

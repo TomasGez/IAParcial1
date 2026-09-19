@@ -2,18 +2,20 @@ using UnityEngine;
 
 public class ExamineState : State
 {
-    public ExamineState(BoidAgent agent, ExamineData data, FSM stateMachine) : base(stateMachine)
+    public ExamineState(BoidAgent agent, PreyUI UI, ExamineData data, FSM stateMachine) : base(stateMachine)
     {
+        _UI = UI;
         _agent = agent;
         _examineData = data;
     }
 
     private BoidAgent _agent;
+    private PreyUI _UI;
     private ExamineData _examineData;
 
     public override void Enter()
     {
-        _agent.currentMode = "Examine";
+        _UI.ChangePreyUI(preyModes.Examine);
     }
 
     public override void Update()

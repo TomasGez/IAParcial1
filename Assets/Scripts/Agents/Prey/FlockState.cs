@@ -3,18 +3,20 @@ using UnityEngine;
 
 public class FlockState : State
 {
-    public FlockState(BoidAgent agent, FlockData data, FSM stateMachine) : base(stateMachine)
+    public FlockState(BoidAgent agent, PreyUI UI, FlockData data, FSM stateMachine) : base(stateMachine)
     {
+        _UI = UI;
         _agent = agent;
         _flockData = data;
     }
 
     private BoidAgent _agent;
+    private PreyUI _UI;
     private FlockData _flockData;
 
     public override void Enter()
     {
-        _agent.currentMode = "Flock";
+        _UI.ChangePreyUI(preyModes.Flock);
     }
 
     public override void Update()

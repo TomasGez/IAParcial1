@@ -5,10 +5,10 @@ public enum hunterModes {Patrol, Bait, Hunt, Gather}
 
 public class NPCAgent : Agent
 {
-    public HunterUI hunterUI;
+    [SerializeField] private HunterUI hunterUI;
     private Queue<BoidAgent> _preyQueue = new Queue<BoidAgent>();
     [SerializeField] private float attackCooldown;
-    public float _attackTimer;
+    private float _attackTimer;
     private bool _isHunting = false;
 
     [Header("Patrol Stats")]
@@ -27,10 +27,10 @@ public class NPCAgent : Agent
     {
         _stateMachine = new FSM();
 
-        PatrolState patrolState = new PatrolState(this, _patrolData, _stateMachine);
-        BaitState baitState = new BaitState(this, _baitData, _stateMachine);
-        HuntState huntState = new HuntState(this, _huntData, _stateMachine);
-        GatherState gatherState = new GatherState(this, _gatherData, _stateMachine);
+        PatrolState patrolState = new PatrolState(this, hunterUI, _patrolData, _stateMachine);
+        BaitState baitState = new BaitState(this, hunterUI, _baitData, _stateMachine);
+        HuntState huntState = new HuntState(this, hunterUI, _huntData, _stateMachine);
+        GatherState gatherState = new GatherState(this, hunterUI, _gatherData, _stateMachine);
 
         _stateMachine.RegisterState(hunterModes.Patrol, patrolState);
         _stateMachine.RegisterState(hunterModes.Bait, baitState);

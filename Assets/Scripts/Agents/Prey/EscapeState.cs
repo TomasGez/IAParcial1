@@ -2,20 +2,21 @@ using UnityEngine;
 
 public class EscapeState : State
 {
-    public EscapeState(BoidAgent agent, EscapeData data, FSM stateMachine) : base(stateMachine)
+    public EscapeState(BoidAgent agent, PreyUI UI, EscapeData data, FSM stateMachine) : base(stateMachine)
     {
+        _UI = UI;
         _agent = agent;
         _escapeData = data;
     }
 
     private BoidAgent _agent;
+    private PreyUI _UI;
     private EscapeData _escapeData;
 
     public override void Enter()
     {
-        Debug.Log("Escaping");
+        _UI.ChangePreyUI(preyModes.Escape);
         _agent.SetCurrentSpeed(_agent.GetMaxSpeed());
-        _agent.currentMode = "Escaping";
     }
 
     public override void Update()

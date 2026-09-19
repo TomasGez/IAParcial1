@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class BaitState : State
 {
-    public BaitState (NPCAgent agent, BaitData data, FSM stateMachine) : base(stateMachine)
+    public BaitState (NPCAgent agent, HunterUI UI, BaitData data, FSM stateMachine) : base(stateMachine)
     {
+        _UI = UI;
         _agent = agent;
         _baitData = data;
     }
 
     private NPCAgent _agent;
+    private HunterUI _UI;
     private BaitData _baitData;
     private float _stopingVelocity;
     private float _placeTimer = 0;
@@ -18,12 +20,12 @@ public class BaitState : State
         _placeTimer = 0;
         _stopingVelocity = _baitData.stopStart;
 
-        _agent.hunterUI.ChangeHunterUI(hunterModes.Bait);
+        _UI.ChangeHunterUI(hunterModes.Bait);
     }
 
     public override void Update()
     {
-        _agent.hunterUI.PlacingBait(_placeTimer, _baitData.placeBaitCooldown);
+        _UI.PlacingBait(_placeTimer, _baitData.placeBaitCooldown);
 
         _stopingVelocity -= Time.deltaTime;
         _agent.SetCurrentVelocity(_agent.GetCurrentVelocity() * Mathf.Clamp(_stopingVelocity, 0f, _baitData.stopStart));

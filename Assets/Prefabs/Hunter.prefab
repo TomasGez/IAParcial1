@@ -569,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 3334587967180003991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -644,7 +644,6 @@ MonoBehaviour:
   maxSteering: 15
   hunterUI: {fileID: 5082808634504094714}
   attackCooldown: 8
-  _attackTimer: 0
   _patrolData:
     patrolPoints: []
     pointCheckDistance: 0.2

@@ -4,7 +4,7 @@ public enum preyModes {Flock, Examine, Escape, Dead}
 
 public class BoidAgent : Agent
 {
-    public string currentMode;
+    [SerializeField] private PreyUI preyUI;
     private InterestItem _bait;
     private NPCAgent _hunter;
     private bool _isExamining = false;
@@ -27,10 +27,10 @@ public class BoidAgent : Agent
     {
         _stateMachine = new FSM();
 
-        FlockState flockState = new FlockState(this, _flockData, _stateMachine);
-        ExamineState examineState = new ExamineState(this, _examineData, _stateMachine);
-        EscapeState escapeState = new EscapeState(this, _escapeData, _stateMachine);
-        DeadState deadState = new DeadState(this, _deadData, _stateMachine);
+        FlockState flockState = new FlockState(this, preyUI, _flockData, _stateMachine);
+        ExamineState examineState = new ExamineState(this, preyUI, _examineData, _stateMachine);
+        EscapeState escapeState = new EscapeState(this, preyUI, _escapeData, _stateMachine);
+        DeadState deadState = new DeadState(this, preyUI, _deadData, _stateMachine);
 
         _stateMachine.RegisterState(preyModes.Flock, flockState);
         _stateMachine.RegisterState(preyModes.Examine, examineState);
