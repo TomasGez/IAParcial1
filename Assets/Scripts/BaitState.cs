@@ -17,10 +17,14 @@ public class BaitState : State
     {
         _placeTimer = 0;
         _stopingVelocity = _baitData.stopStart;
+
+        _agent.hunterUI.ChangeHunterUI(hunterModes.Bait);
     }
 
     public override void Update()
     {
+        _agent.hunterUI.PlacingBait(_placeTimer, _baitData.placeBaitCooldown);
+
         _stopingVelocity -= Time.deltaTime;
         _agent.SetCurrentVelocity(_agent.GetCurrentVelocity() * Mathf.Clamp(_stopingVelocity, 0f, _baitData.stopStart));
 

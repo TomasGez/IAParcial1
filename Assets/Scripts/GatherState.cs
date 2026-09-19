@@ -15,6 +15,8 @@ public class GatherState : State
     public override void Enter()
     {
         _harvestTimer = 0;
+
+        _agent.hunterUI.ChangeHunterUI(hunterModes.Gather);
     }
 
     public override void Update()

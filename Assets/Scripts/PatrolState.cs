@@ -20,10 +20,13 @@ public class PatrolState : State
         {
             _stateMachine.ChangeState(hunterModes.Hunt);
         }
+
+        _agent.hunterUI.ChangeHunterUI(hunterModes.Patrol);
     }
 
     public override void Update()
     {
+        _agent.Reloading();
         PatrolLoop();
 
         _baitTimer += Time.deltaTime;

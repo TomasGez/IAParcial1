@@ -1,12 +1,14 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum hunterModes {Patrol, Bait, Hunt, Gather}
 
 public class NPCAgent : Agent
 {
+    public HunterUI hunterUI;
     private Queue<BoidAgent> _preyQueue = new Queue<BoidAgent>();
+    [SerializeField] private float attackCooldown;
+    public float _attackTimer;
     private bool _isHunting = false;
 
     [Header("Patrol Stats")]
@@ -72,6 +74,25 @@ public class NPCAgent : Agent
     public void ClearTargetQueue()
     {
         _preyQueue.Clear();
+    }
+
+    public float GetAttackCooldown()
+    {
+        return attackCooldown;
+    }
+
+    public float GetAttackTimer()
+    {
+        return _attackTimer;
+    }
+
+    public void Reloading()
+    {
+        if(_attackTimer < attackCooldown)
+        {
+            _attackTimer += Time.deltaTime;
+            hunterUI.ReloadAttack(_attackTimer, attackCooldown);
+        }
     }
 
     public bool GetIsHunting()

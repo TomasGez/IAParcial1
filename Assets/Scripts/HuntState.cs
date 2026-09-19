@@ -10,15 +10,17 @@ public class HuntState : State
 
     private NPCAgent _agent;
     private HuntData _huntData;
-    private float _attackTimer = 0;
 
     public override void Enter()
     {
-        
+        _agent.hunterUI.ChangeHunterUI(hunterModes.Hunt);
+        _agent.hunterUI.IsMeleeAttack(true);
     }
 
     public override void Update()
     {
+        _agent.Reloading();
+
         if(_agent.GetCurrentBoidTarget() != null)
         {
             _agent.Pursuit(_agent.GetCurrentBoidTarget(), _huntData.preySlowingDistance, _huntData.preyMinDistance);
@@ -46,7 +48,6 @@ public class HuntData
     public float preySlowingDistance;
     public float preyMinDistance;
     public float losePreyDistance;
-    public float attackCooldown;
     public float rangeDistance;
     public float meleeDistance;
 }
