@@ -20,6 +20,7 @@ public class BaitState : State
         _placeTimer = 0;
         _stopingVelocity = _baitData.stopStart;
 
+        _UI.PlacingBait(_placeTimer, _baitData.placeBaitCooldown);
         _UI.ChangeHunterUI(hunterModes.Bait);
     }
 

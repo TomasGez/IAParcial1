@@ -756,7 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   preyPrefab: {fileID: 2527955864532945839, guid: 86b8bfd2e6b450a4aa70a33c1666d058, type: 3}
   spawnCooldown: 10
-  maxAgents: 8
+  maxAgents: 6
 --- !u!4 &1761528357
 Transform:
   m_ObjectHideFlags: 0

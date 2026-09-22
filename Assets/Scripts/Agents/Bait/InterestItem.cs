@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class InterestItem : MonoBehaviour
 {
+    [SerializeField] private BaitUI baitUI;
     [SerializeField] private float maxHealth;
     private float _currentHealth;
 
@@ -11,17 +12,15 @@ public class InterestItem : MonoBehaviour
         _currentHealth = maxHealth;
     }
 
-    private void Update()
+    public void Interacting()
     {
-        if(_currentHealth <= 0)
+        if (_currentHealth <= 0)
         {
             Manager.Instance.RemoveBait();
             Destroy(gameObject);
         }
-    }
 
-    public void Interacting()
-    {
         _currentHealth -= Time.deltaTime;
+        baitUI.UpdateBaitHealth(_currentHealth, maxHealth);
     }
 }

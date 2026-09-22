@@ -12,15 +12,21 @@ public class DeadState : State
     private BoidAgent _agent;
     private PreyUI _UI;
     private DeadData _deadData;
+    private float _currentHarvestTime;
 
     public override void Enter()
     {
+        _currentHarvestTime = _deadData.maxHarvestTime;
+
         _UI.ChangePreyUI(preyModes.Dead);
     }
 
     public override void Update()
     {
-        
+        if (_currentHealth <= 0)
+        {
+            
+        }
     }
 
     public override void Exit()
@@ -32,5 +38,5 @@ public class DeadState : State
 [System.Serializable]
 public class DeadData
 {
-    [HideInInspector] public Agent _agent;
+    public float maxHarvestTime;
 }

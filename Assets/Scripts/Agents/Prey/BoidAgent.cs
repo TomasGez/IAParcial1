@@ -54,6 +54,11 @@ public class BoidAgent : Agent
         Movement();
     }
 
+    private void OnDestroy()
+    {
+        Spawner.Instance.RemoveAgent(this);
+    }
+
     public InterestItem GetCurrentItem()
     {
         return _bait;
