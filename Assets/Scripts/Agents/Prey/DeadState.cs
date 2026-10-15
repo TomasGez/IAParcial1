@@ -23,10 +23,7 @@ public class DeadState : State
 
     public override void Update()
     {
-        if (_currentHealth <= 0)
-        {
-            
-        }
+
     }
 
     public override void Exit()

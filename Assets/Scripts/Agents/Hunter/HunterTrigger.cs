@@ -18,4 +18,12 @@ public class HunterTrigger : MonoBehaviour
             _father.SetIsHunting(true);
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Prey"))
+        {
+            Debug.Log("Prey left");
+        }
+    }
 }

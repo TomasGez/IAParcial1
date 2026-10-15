@@ -138,7 +138,6 @@ MonoBehaviour:
   _rangedIcon: {fileID: 3142381943535984568}
   _reloadBar: {fileID: 4178278862691188554}
   _placingBaitBar: {fileID: 7130182224612035477}
-  _harvestIcon: {fileID: 7639327721647210996}
 --- !u!1 &754085918139156788
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +260,7 @@ GameObject:
   - component: {fileID: 7462018277461942716}
   - component: {fileID: 6060466493042117334}
   - component: {fileID: 1124577385417057528}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sight Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
