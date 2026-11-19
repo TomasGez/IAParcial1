@@ -1,66 +1,97 @@
-using UnityEngine.UI;
 using UnityEngine;
-using System;
+using UnityEngine.UI;
 
 public class HunterUI : MonoBehaviour
 {
-    [SerializeField] private GameObject _patrolHuntUI;
-    [SerializeField] private GameObject _baitUI;
-    [SerializeField] private GameObject _gatherUI;
+    [SerializeField] private Image _energyBackground;
+    [SerializeField] private Image _energyBar;
     [SerializeField] private Image _patrolIcon;
-    [SerializeField] private Image _meleeIcon;
-    [SerializeField] private Image _rangedIcon;
-    [SerializeField] private Image _reloadBar;
-    [SerializeField] private Image _placingBaitBar;
+    [SerializeField] private Image _baitIcon;
+    [SerializeField] private Image _placeBackground;
+    [SerializeField] private Image _placeBar;
+    [SerializeField] private Image _huntIcon;
+    [SerializeField] private Sprite _rangedTexture;
+    [SerializeField] private Sprite _meleeTexture;
+    [SerializeField] private Image _attackBackground;
+    [SerializeField] private Image _attackBar;
+    [SerializeField] private Image _harvestIcon;
+    [SerializeField] private Image _gatherBackground;
+    [SerializeField] private Image _gatherBar;
+    [SerializeField] private Image _restIcon;
 
-    public void ChangeHunterUI(Enum type)
+    public void ChangeMode(HunterMode mode)
     {
-        _patrolHuntUI.SetActive(false);
-        _baitUI.SetActive(false);
-        _gatherUI.SetActive(false);
         _patrolIcon.enabled = false;
-        _meleeIcon.enabled = false;
-        _rangedIcon.enabled = false;
+        _baitIcon.enabled = false;
+        _placeBackground.enabled = false;
+        _placeBar.enabled = false;
+        _huntIcon.enabled = false;
+        _attackBackground.enabled = false;
+        _attackBar.enabled = false;
+        _harvestIcon.enabled = false;
+        _gatherBackground.enabled = false;
+        _gatherBar.enabled = false;
+        _restIcon.enabled = false;
 
-        switch (type)
+        switch (mode)
         {
-            case hunterModes.Patrol:
-                _patrolHuntUI.SetActive(true);
+            case HunterMode.Patrol:
                 _patrolIcon.enabled = true;
                 break;
-            case hunterModes.Bait:
-                _baitUI.SetActive(true);
+            case HunterMode.Bait:
+                _baitIcon.enabled = true;
+                _placeBackground.enabled = true;
+                _placeBar.enabled = true;
                 break;
-            case hunterModes.Hunt:
-                _patrolHuntUI.SetActive(true);
+            case HunterMode.Hunt:
+                _huntIcon.enabled = true;
+                _attackBackground.enabled = true;
+                _attackBar.enabled = true;
                 break;
-            case hunterModes.Gather:
-                _gatherUI.SetActive(true);
+            case HunterMode.Harvest:
+                _harvestIcon.enabled = true;
+                _gatherBackground.enabled = true;
+                _gatherBar.enabled = true;
+                break;
+            case HunterMode.Rest:
+                _restIcon.enabled = true;
                 break;
             default:
                 break;
         }
     }
 
-    public void IsMeleeAttack(bool isClose)
+    public void ChangeAttack(bool isRanged)
     {
-        if(isClose)
+        if (isRanged) _huntIcon.sprite = _rangedTexture;
+
+        else _huntIcon.sprite = _meleeTexture;
+    }
+
+    public void UpdateBar(float currentValue, float maxValue, HunterMode mode)
+    {
+        float barFill = Mathf.Clamp(currentValue / maxValue, 0, 1);
+
+        switch (mode)
         {
-            _meleeIcon.enabled = true;
-        }
-        else
-        {
-            _rangedIcon.enabled = true;
+            case HunterMode.Bait:
+                _placeBar.fillAmount = barFill;
+                break;
+            case HunterMode.Hunt:
+                _attackBar.fillAmount = barFill;
+                break;
+            case HunterMode.Harvest:
+                _gatherBar.fillAmount = barFill;
+                break;
+            default:
+                break;
         }
     }
 
-    public void ReloadAttack(float currentValue, float maxValue)
+    public void UpdateBottomBar(float currentValue, float maxValue)
     {
-        _reloadBar.fillAmount = Mathf.Clamp(currentValue / maxValue, 0, 1);
-    }
+        float barFill = Mathf.Clamp(currentValue / maxValue, 0, 1);
 
-    public void PlacingBait(float currentValue, float maxValue)
-    {
-        _placingBaitBar.fillAmount = Mathf.Clamp(currentValue / maxValue, 0, 1);
+        _energyBar.fillAmount = barFill;
     }
 }

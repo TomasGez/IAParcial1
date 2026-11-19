@@ -1,43 +1,48 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PreyUI : MonoBehaviour
 {
-    [SerializeField] private GameObject _flockUI;
-    [SerializeField] private GameObject _examineUI;
-    [SerializeField] private GameObject _escapeUI;
-    [SerializeField] private GameObject _deadUI;
-    [SerializeField] private Image _harvestBar;
+    [SerializeField] private Image _healthBackground;
+    [SerializeField] private Image _healthBar;
+    [SerializeField] private Image _flockIcon;
+    [SerializeField] private Image _examineIcon;
+    [SerializeField] private Image _escapeIcon;
+    [SerializeField] private Image _deadIcon;
 
-    public void ChangePreyUI(Enum type)
+    public void ChangeMode(PreyMode mode)
     {
-        _flockUI.SetActive(false);
-        _examineUI.SetActive(false);
-        _escapeUI.SetActive(false);
-        _deadUI.SetActive(false);
+        _flockIcon.enabled = false;
+        _examineIcon.enabled = false;
+        _escapeIcon.enabled = false;
+        _deadIcon.enabled = false;
 
-        switch (type)
+        switch (mode)
         {
-            case preyModes.Flock:
-                _flockUI.SetActive(true);
+            case PreyMode.Flock:
+                _flockIcon.enabled = true;
                 break;
-            case preyModes.Examine:
-                _examineUI.SetActive(true);
+            case PreyMode.Examine:
+                _examineIcon.enabled = true;
                 break;
-            case preyModes.Escape:
-                _escapeUI.SetActive(true);
+            case PreyMode.Consume:
+                _examineIcon.enabled = true;
                 break;
-            case preyModes.Dead:
-                _deadUI.SetActive(true);
+            case PreyMode.Escape:
+                _escapeIcon.enabled = true;
+                break;
+            case PreyMode.Dead:
+                _deadIcon.enabled = true;
                 break;
             default:
                 break;
         }
     }
 
-    public void BeingHarvested(float currentValue, float maxValue)
+    public void UpdateBottomBar(float currentValue, float maxValue)
     {
-        _harvestBar.fillAmount = Mathf.Clamp(currentValue / maxValue, 0, 1);
+        float barFill = Mathf.Clamp(currentValue / maxValue, 0, 1);
+
+        _healthBar.fillAmount = barFill;
     }
 }

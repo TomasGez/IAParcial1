@@ -1,5 +1,8 @@
 using UnityEngine;
 
+public enum HunterMode { Patrol, Bait, Hunt, Harvest, Rest }
+public enum PreyMode { Flock, Examine, Consume, Escape, Dead, Respawn }
+
 public class Manager : MonoBehaviour
 {
     public static Manager Instance {get; private set;}
