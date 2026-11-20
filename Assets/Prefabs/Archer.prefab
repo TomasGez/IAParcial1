@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7182775764623791206}
   - component: {fileID: 7550956597218977043}
   - component: {fileID: 3051752518529166646}
+  - component: {fileID: 9077270548133684088}
   m_Layer: 6
   m_Name: Archer
   m_TagString: Untagged
@@ -34,7 +35,6 @@ Transform:
   - {fileID: 4832761043203185396}
   - {fileID: 1659334974072271414}
   - {fileID: 4352468375445689602}
-  - {fileID: 6219353582281531941}
   - {fileID: 3483832103216614088}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -88,6 +88,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &9077270548133684088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315922804512332797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73ff5b9ece987f49b192883d888e70f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Archer
+  _maxSpeed: 5.5
+  _maxSteering: 20
+  _targetMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _maxEnergy: 10
+  _patrolData:
+    waypoints: []
+    waypointCheckDistance: 0.2
+    baitCooldown: 4.5
+  _baitData:
+    baitPrefab: {fileID: 8718725524263268500, guid: 9702da1c6d73da44684d1b0db8632289, type: 3}
+    baitCondition: 5
+    baitTime: 4
+    totalBaits: 5
+  _huntData:
+    huntTime: 3
+    rangedDistance: 8
+    meleeDistance: 2.5
+    rangedDamage: 1
+    meleeDamage: 2
+  _harvestData:
+    preySlowingDistance: 1.5
+    preyMinDistance: 1
+    harvestTime: 5
 --- !u!1 &575489256719417037
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1659334974072271414}
   - component: {fileID: 4002144793885040339}
+  - component: {fileID: 3312307792995604521}
   m_Layer: 0
   m_Name: Field Of View
   m_TagString: Untagged
@@ -217,59 +255,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1101093054901576725
-GameObject:
+--- !u!114 &3312307792995604521
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6219353582281531941}
-  - component: {fileID: 2158838688310545854}
-  m_Layer: 0
-  m_Name: Ranged Field
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6219353582281531941
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101093054901576725}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7182775764623791206}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2158838688310545854
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101093054901576725}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_GameObject: {fileID: 699850535456058795}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 8
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24bc3adb15af3348b18333cadcd5e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HunterSensor
 --- !u!1 &1350017054002319266
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,8 +443,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4352468375445689602}
   - component: {fileID: 281103168056771941}
+  - component: {fileID: 2446849479145628234}
   m_Layer: 0
-  m_Name: Melee Field
+  m_Name: Harvest Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,8 +485,20 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2446849479145628234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2724148129916920460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0076e674885c40944a534eed00c7cd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HunterCloseField
 --- !u!1 &3096618719131976408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1557,7 @@ MonoBehaviour:
   _placeBackground: {fileID: 9212019880135646385}
   _placeBar: {fileID: 6532058992078657637}
   _huntIcon: {fileID: 3184797945851881659}
-  _FarTexture: {fileID: 21300000, guid: d05b055e48fbcf74fa3f55368cca0ea3, type: 3}
+  _farTexture: {fileID: 21300000, guid: d05b055e48fbcf74fa3f55368cca0ea3, type: 3}
   _rangedTexture: {fileID: 21300000, guid: 5d7013daf998a954cace1103f7afc33e, type: 3}
   _meleeTexture: {fileID: 21300000, guid: 677597984fc5c984aac8d7cf0a633986, type: 3}
   _attackBackground: {fileID: 7841240691287054312}

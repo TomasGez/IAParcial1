@@ -2,23 +2,13 @@ using UnityEngine;
 
 public class HunterCloseField : HunterTriggers
 {
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (!IsValidTarget(other.gameObject.layer, _agent.TargetMask)) return;
+        if (!IsValidTarget(other.gameObject.layer, _agent.TargetMask) || _agent.IsResting) return;
 
         if (other.TryGetComponent<Animal>(out var animal))
         {
-            if (animal == _agent.PreyTarget) _agent.InMeleeRange(true);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!IsValidTarget(other.gameObject.layer, _agent.TargetMask)) return;
-
-        if (other.TryGetComponent<Animal>(out var animal))
-        {
-            if (animal == _agent.PreyTarget) _agent.InMeleeRange(false);
+            if (animal == _agent.PreyTarget) _agent.StartHarvesting();
         }
     }
 }

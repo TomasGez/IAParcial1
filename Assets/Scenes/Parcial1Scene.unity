@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 169960694}
+  - component: {fileID: 169960695}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -150,6 +151,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &169960695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169960693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb4a97f3d7d72843ae6cfa541ff7e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Manager
 --- !u!1001 &171602353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,36 +215,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9077270548133684088, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
+      propertyPath: _maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077270548133684088, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
+      propertyPath: _huntData.outOfRangeDistance
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077270548133684088, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
+      propertyPath: _patrolData.waypoints.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077270548133684088, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
+      propertyPath: '_patrolData.waypoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1162141465}
+    - target: {fileID: 9077270548133684088, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
+      propertyPath: '_patrolData.waypoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1361816768}
+    - target: {fileID: 9077270548133684088, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
+      propertyPath: '_patrolData.waypoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1680796164}
+    - target: {fileID: 9077270548133684088, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
+      propertyPath: '_patrolData.waypoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1617085320}
+    - target: {fileID: 9077270548133684088, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
+      propertyPath: '_patrolData.waypoints.Array.data[4]'
+      value: 
+      objectReference: {fileID: 323005393}
+    - target: {fileID: 9077270548133684088, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
+      propertyPath: '_patrolData.waypoints.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2096222925}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 315922804512332797, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 171602355}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
---- !u!1 &171602354 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 315922804512332797, guid: 7d94ecf440fe4ed47bb8ab5f433a66d6, type: 3}
-  m_PrefabInstance: {fileID: 171602353}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &171602355
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171602354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e73ff5b9ece987f49b192883d888e70f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Archer
-  _maxSpeed: 0
-  _maxSteering: 0
-  _targetMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &178407517
 GameObject:
   m_ObjectHideFlags: 0

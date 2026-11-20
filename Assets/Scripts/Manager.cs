@@ -7,7 +7,7 @@ public class Manager : MonoBehaviour
 {
     public static Manager Instance {get; private set;}
 
-    private static int _baitAmount;
+    private static int _plantsInScene;
 
     private void Awake()
     {
@@ -21,18 +21,18 @@ public class Manager : MonoBehaviour
         }
     }
 
-    public int GetBaitAmount()
+    public int GetTotalPlants()
     {
-        return _baitAmount;
+        return _plantsInScene;
     }
 
-    public void AddBait()
+    public void AddPlant()
     {
-        _baitAmount += 1;
+        _plantsInScene += 1;
     }
 
-    public void RemoveBait()
+    public void RemovePlant()
     {
-        _baitAmount -= 1;
+        _plantsInScene -= 1;
     }
 }

@@ -26,6 +26,7 @@ public class Plant : MonoBehaviour
 
         if (_currentCondition <= 0)
         {
+            Manager.Instance.RemovePlant();
             Destroy(gameObject);
         }
     }

@@ -83,6 +83,9 @@ public class Animal : AgentPrey
     public void TerminateAnimal()
     {
         IsDead = false;
+        
+        _currentHealth = _maxHealth;
+        _preyUI.UpdateBottomBar(_currentHealth, _maxHealth);
 
         _stateMachine.ChangeState(PreyMode.Respawn);
     }

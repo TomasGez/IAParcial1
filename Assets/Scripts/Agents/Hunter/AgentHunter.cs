@@ -17,16 +17,13 @@ public class AgentHunter : Agent
 
     public void PreyExited(Animal target)
     {
+        if (_allPreys.Contains(target)) _allPreys.Remove(target);
+        
         if (target == _preyTarget)
         {
-            if (_allPreys.Count > 0)
-            {
-                _preyTarget = _allPreys[0];
-            }
-            else
-            {
-                _preyTarget = null;
-            }
+            if (_allPreys.Count > 0) _preyTarget = _allPreys[0];
+
+            else _preyTarget = null;
         }
     }
 
