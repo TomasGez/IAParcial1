@@ -10,7 +10,10 @@ public class PreySensor : PreyTriggers
     {
         if (!IsValidTarget(other.gameObject.layer, _agent.TargetMask) || _agent.IsDead) return;
 
-        if (other.TryGetComponent<Animal>(out var animal)) _agent.PreyAttached(animal);
+        if (other.TryGetComponent<Animal>(out var animal))
+        {
+            if (!animal.IsDead) _agent.PreyAttached(animal);
+        }
 
         if (other.TryGetComponent<Plant>(out var plant)) _agent.BaitEntered(plant);
 

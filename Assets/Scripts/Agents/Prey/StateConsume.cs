@@ -39,7 +39,8 @@ public class StateConsume : State
 
         if (_agent.BaitTarget != null)
         {
-            
+            _agent.BaitTarget.ConsumeBait();
+            SeekArrive();
         }
     }
 

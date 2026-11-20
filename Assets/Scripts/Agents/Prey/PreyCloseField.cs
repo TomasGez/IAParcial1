@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class PreyCloseField : MonoBehaviour
+public class PreyCloseField : PreyTriggers
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
+        if (!IsValidTarget(other.gameObject.layer, _agent.TargetMask) || _agent.IsDead) return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.TryGetComponent<Plant>(out var plant))
+        {
+            if (plant == _agent.BaitTarget) _agent.StartConsuming();
+        }
     }
 }

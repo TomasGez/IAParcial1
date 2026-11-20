@@ -10,7 +10,7 @@ public class HunterUI : MonoBehaviour
     [SerializeField] private Image _placeBackground;
     [SerializeField] private Image _placeBar;
     [SerializeField] private Image _huntIcon;
-    [SerializeField] private Sprite _FarTexture;
+    [SerializeField] private Sprite _farTexture;
     [SerializeField] private Sprite _rangedTexture;
     [SerializeField] private Sprite _meleeTexture;
     [SerializeField] private Image _attackBackground;
@@ -19,6 +19,10 @@ public class HunterUI : MonoBehaviour
     [SerializeField] private Image _gatherBackground;
     [SerializeField] private Image _gatherBar;
     [SerializeField] private Image _restIcon;
+
+    public Sprite FarTexture => _farTexture;
+    public Sprite RangedTexture => _rangedTexture;
+    public Sprite MeleeTexture => _meleeTexture;
 
     public void ChangeMode(HunterMode mode)
     {
@@ -62,11 +66,9 @@ public class HunterUI : MonoBehaviour
         }
     }
 
-    public void ChangeAttack(bool isRanged)
+    public void ChangeHuntIcon(Sprite texture)
     {
-        if (isRanged) _huntIcon.sprite = _rangedTexture;
-
-        else _huntIcon.sprite = _meleeTexture;
+        _huntIcon.sprite = texture;
     }
 
     public void UpdateBar(float currentValue, float maxValue, HunterMode mode)

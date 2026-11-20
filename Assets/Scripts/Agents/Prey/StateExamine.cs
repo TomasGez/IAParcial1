@@ -19,6 +19,8 @@ public class StateExamine : State
     {
         _UI.ChangeMode(PreyMode.Examine);
         _anim.SetTrigger("IsWalking");
+
+        _agent.SetCurrentSpeed(_agent.MaxSpeed);
     }
 
     public override void Update()

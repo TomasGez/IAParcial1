@@ -22,6 +22,7 @@ public class StateFlock : State
         _UI.ChangeMode(PreyMode.Flock);
         _anim.SetTrigger("IsWalking");
 
+        _agent.SetCurrentSpeed(_agent.MaxSpeed);
         RandomDirection();
     }
 

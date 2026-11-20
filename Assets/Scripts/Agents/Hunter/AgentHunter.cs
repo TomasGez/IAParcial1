@@ -29,4 +29,11 @@ public class AgentHunter : Agent
             }
         }
     }
+
+    public void ClearPreys()
+    {
+        if (_allPreys.Count > 0) _allPreys.Clear();
+
+        if (_preyTarget != null) _preyTarget = null;
+    }
 }

@@ -106,6 +106,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   _keepTargetTime: 3
+  _maxHealth: 2
   _flockData:
     separationRadius: 2
     alignmentRadius: 3
@@ -113,6 +114,11 @@ MonoBehaviour:
     separationWeight: 0.8
     alignmentWeight: 0.5
     cohesionWeight: 0.4
+  _consumeData:
+    baitSlowingDistance: 2
+    baitMinDistance: 1.5
+  _respawnData:
+    respawnTime: 5
 --- !u!1 &1538426168927352002
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,8 +355,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3992106470742630633}
   - component: {fileID: 5771825740726751867}
+  - component: {fileID: 2201600473298292676}
   m_Layer: 0
-  m_Name: Examine Field
+  m_Name: Close Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -390,8 +397,20 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 1.75
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2201600473298292676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2327753752107901327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef38b8f88115f54d92181dbae2b4c8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PreyCloseField
 --- !u!1 &2936256328001173732
 GameObject:
   m_ObjectHideFlags: 0

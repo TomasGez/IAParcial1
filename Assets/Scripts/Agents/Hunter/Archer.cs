@@ -3,12 +3,17 @@ using UnityEngine;
 public class Archer : AgentHunter
 {
     private HunterUI _hunterUI;
+    private Animator _hunterAnim;
+
+    public bool IsRanged { get; private set; }
+    public bool IsClose { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
 
         _hunterUI = GetComponentInChildren<HunterUI>();
+        _hunterAnim = GetComponentInChildren<Animator>();
 
         StatePatrol _statePatrol = new StatePatrol(this, _hunterUI, _stateMachine);
         StateBait _stateBait = new StateBait(this, _hunterUI, _stateMachine);
@@ -30,5 +35,32 @@ public class Archer : AgentHunter
         _stateMachine.Update();
 
         Movement();
+    }
+
+    public void InShootRange(bool isActive)
+    {
+        if (IsRanged) return;
+
+        IsRanged = isActive;
+
+        if (IsRanged) _hunterUI.ChangeHuntIcon(_hunterUI.RangedTexture);
+
+        else _hunterUI.ChangeHuntIcon(_hunterUI.FarTexture);
+    }
+
+    public void InMeleeRange(bool isActive)
+    {
+        if (IsClose) return;
+
+        IsClose = isActive;
+
+        if (IsClose) _hunterUI.ChangeHuntIcon(_hunterUI.MeleeTexture);
+
+        else
+        {
+            if (IsRanged) _hunterUI.ChangeHuntIcon(_hunterUI.RangedTexture);
+
+            else _hunterUI.ChangeHuntIcon(_hunterUI.FarTexture);
+        }
     }
 }

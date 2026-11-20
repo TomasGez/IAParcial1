@@ -19,6 +19,8 @@ public class StateEscape : State
     {
         _UI.ChangeMode(PreyMode.Escape);
         _anim.SetTrigger("IsWalking");
+
+        _agent.SetCurrentSpeed(_agent.MaxSpeed);
     }
 
     public override void Update()
