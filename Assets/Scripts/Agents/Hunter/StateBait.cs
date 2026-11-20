@@ -1,0 +1,25 @@
+using UnityEngine;
+
+public class StateBait : State
+{
+    public StateBait(Archer agent, HunterUI UI, FSM stateMachine) : base(stateMachine)
+    {
+        _agent = agent;
+        _UI = UI;
+    }
+
+    private Archer _agent;
+    private HunterUI _UI;
+
+    public override void Enter()
+    {
+        _UI.ChangeMode(HunterMode.Bait);
+    }
+
+    public override void Update()
+    {
+
+    }
+
+    public override void Exit() { }
+}

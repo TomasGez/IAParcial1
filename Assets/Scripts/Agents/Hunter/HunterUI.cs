@@ -10,6 +10,7 @@ public class HunterUI : MonoBehaviour
     [SerializeField] private Image _placeBackground;
     [SerializeField] private Image _placeBar;
     [SerializeField] private Image _huntIcon;
+    [SerializeField] private Sprite _FarTexture;
     [SerializeField] private Sprite _rangedTexture;
     [SerializeField] private Sprite _meleeTexture;
     [SerializeField] private Image _attackBackground;

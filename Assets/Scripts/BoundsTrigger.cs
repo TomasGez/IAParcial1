@@ -21,6 +21,12 @@ public class BoundsTrigger : MonoBehaviour
     {
         if (other.TryGetComponent<Animal>(out var animal))
         {
+            if (animal.HunterTarget != null)
+            {
+                animal.HunterTarget.PreyExited(animal);
+                animal.HunterExited(animal.HunterTarget);
+            }
+
             Wraparound(animal);
         }
     }

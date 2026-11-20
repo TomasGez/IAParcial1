@@ -5,18 +5,22 @@ public class Agent : MonoBehaviour
 {
     protected FSM _stateMachine;
     protected SteeringBehaviour _steering;
-    private Coroutine _keepLookingRoutine;
 
 
     [Header("Movement Stats")]
-    protected Vector3 _currentVelocity;
-    [SerializeField] protected float _maxSpeed;
-    protected float _currentSpeed;
-    [SerializeField] protected float _maxSteering;
+    [SerializeField] private float _maxSpeed;
+    private float _currentSpeed;
+    [SerializeField] private float _maxSteering;
+    private Vector3 _currentVelocity;
 
-    public Vector3 CurrentVelocity => _currentVelocity;
+    [Header("Sensor")]
+    [SerializeField] private LayerMask _targetMask;
+
+    public float MaxSpeed => _maxSpeed;
     public float CurrentSpeed => _currentSpeed;
     public float MaxSteering => _maxSteering;
+    public Vector3 CurrentVelocity => _currentVelocity;
+    public LayerMask TargetMask => _targetMask;
 
     protected virtual void Awake()
     {
@@ -36,5 +40,13 @@ public class Agent : MonoBehaviour
         }
     }
 
+    public void SetCurrentVelocity(Vector3 value)
+    {
+        _currentVelocity = value;
+    }
 
+    public void SetCurrentSpeed(float value)
+    {
+        _currentSpeed = value;
+    }
 }

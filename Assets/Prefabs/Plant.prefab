@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 1561725782635298227}
   - component: {fileID: 8732516000458860969}
   m_Layer: 5
-  m_Name: State Icon
+  m_Name: Common Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 5136547470006644767}
   - component: {fileID: 9030401746110029316}
   m_Layer: 5
-  m_Name: Bottom Bar Back
+  m_Name: Condition Bar Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: f14e368ea3214ed4e8b763444ebbdc87, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 4485160178953815878}
   - component: {fileID: 6884639254918436135}
   m_Layer: 5
-  m_Name: Botom Bar
+  m_Name: Condition Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,11 +427,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: fc5b417ee421def45bed484478f6cfb9, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 4454868465392376476}
   - component: {fileID: 8277475630708570969}
   - component: {fileID: 5104251044713880244}
+  - component: {fileID: 2084570058799684402}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -553,6 +554,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d195b2ba9a8fa1c41b768b3400cbfc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BillboardCanvas
+--- !u!114 &2084570058799684402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6986608903800791869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc00b4b7de52614fbfe4ca87899748f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaitUI
+  _conditionBackground: {fileID: 9030401746110029316}
+  _conditionBar: {fileID: 6884639254918436135}
+  _commonIcon: {fileID: 8732516000458860969}
 --- !u!1 &8601305207898957308
 GameObject:
   m_ObjectHideFlags: 0
